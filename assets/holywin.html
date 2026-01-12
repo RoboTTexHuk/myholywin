@@ -1,0 +1,1323 @@
+<!DOCTYPE html><html><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANCTUS – Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        html, body { height: 100%; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'gold': {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FCD34D',
+                            400: '#FBBF24',
+                            500: '#D4AF37',
+                            600: '#B8960F',
+                            700: '#92750B',
+                            800: '#705A08',
+                            900: '#4A3B05',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white font-sans overflow-x-hidden">
+
+<!-- HEADER -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-gold-500/20">
+    <div class="flex items-center justify-between px-5 py-4">
+        <button id="menuBtn" class="text-gold-500 text-2xl">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="font-serif text-xl font-bold text-gold-500 tracking-wider" id="headerTitle">SANCTUS</h1>
+        <button class="text-gold-500 text-2xl">
+            <i class="fa-solid fa-bell"></i>
+        </button>
+    </div>
+</header>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="fixed inset-0 bg-black/98 z-50 transform -translate-x-full transition-transform duration-300">
+    <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between px-5 py-4 border-b border-gold-500/20">
+            <h2 class="font-serif text-xl font-bold text-gold-500">Menu</h2>
+            <button id="closeBtn" class="text-gold-500 text-2xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex-1 px-5 py-8 space-y-6">
+            <button data-screen="home" class="sidebar-link flex items-center space-x-4 text-gold-500 text-lg">
+                <i class="fa-solid fa-house w-6"></i>
+                <span class="font-medium">Home</span>
+            </button>
+            <button data-screen="journal" class="sidebar-link flex items-center space-x-4 text-white/70 text-lg">
+                <i class="fa-solid fa-book-open w-6"></i>
+                <span class="font-medium">My Journal</span>
+            </button>
+            <button data-screen="analytics" class="sidebar-link flex items-center space-x-4 text-white/70 text-lg">
+                <i class="fa-solid fa-chart-line w-6"></i>
+                <span class="font-medium">Analytics</span>
+            </button>
+            <button data-screen="saints" class="sidebar-link flex items-center space-x-4 text-white/70 text-lg">
+                <i class="fa-solid fa-hands-praying w-6"></i>
+                <span class="font-medium">Saints Guide</span>
+            </button>
+            <button data-screen="profile" class="sidebar-link flex items-center space-x-4 text-white/70 text-lg">
+                <i class="fa-solid fa-user-circle w-6"></i>
+                <span class="font-medium">Profile</span>
+            </button>
+            <button data-screen="settings" class="sidebar-link flex items-center space-x-4 text-white/70 text-lg">
+                <i class="fa-solid fa-cog w-6"></i>
+                <span class="font-medium">Settings</span>
+            </button>
+        </nav>
+    </div>
+</div>
+
+<!-- MAIN SCREENS CONTAINER -->
+<main class="pt-20 pb-24" id="mainContainer">
+
+    <!-- HOME SCREEN -->
+    <section id="screen-home" class="screen active">
+        <section id="hero-section" class="relative px-5 py-8">
+            <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-gold-500/20 to-transparent blur-3xl"></div>
+                <div class="relative">
+                    <p class="text-gold-500 text-xs uppercase tracking-widest mb-2 font-semibold">Welcome back</p>
+                    <h2 class="font-serif text-3xl font-bold mb-3 leading-tight">Your Spiritual Journey</h2>
+                    <p class="text-white/60 text-sm leading-relaxed mb-6">Track divine interventions, record sacred moments, and discover patterns in your spiritual victories.</p>
+                    <button id="newEventBtn" class="w-full bg-gradient-to-r from-gold-600 to-gold-500 text-black font-semibold py-4 rounded-xl shadow-lg shadow-gold-500/30 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Record New Event</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats-section" class="px-5 py-6">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gradient-to-br from-gold-500/10 to-gold-500/5 border border-gold-500/20 rounded-2xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <i class="fa-solid fa-trophy text-gold-500 text-2xl"></i>
+                        <span class="text-xs text-gold-500 font-semibold" id="victoriesChange">+12%</span>
+                    </div>
+                    <p class="text-3xl font-bold font-serif mb-1" id="victoriesCount">24</p>
+                    <p class="text-white/50 text-xs uppercase tracking-wide">Victories</p>
+                </div>
+                <div class="bg-gradient-to-br from-gold-500/10 to-gold-500/5 border border-gold-500/20 rounded-2xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <i class="fa-solid fa-hands-praying text-gold-500 text-2xl"></i>
+                        <span class="text-xs text-gold-500 font-semibold" id="saintsChange">+8%</span>
+                    </div>
+                    <p class="text-3xl font-bold font-serif mb-1" id="saintsCount">12</p>
+                    <p class="text-white/50 text-xs uppercase tracking-wide">Saints</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recent-events-section" class="px-5 py-6">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-serif text-xl font-bold">Recent Events</h3>
+                <button id="viewAllEventsBtn" class="text-gold-500 text-sm font-medium">View All</button>
+            </div>
+            <div id="recentEventsList" class="space-y-4">
+                <!-- JS рендерит -->
+            </div>
+        </section>
+
+        <section id="insights-section" class="px-5 py-6">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-serif text-xl font-bold">Insights</h3>
+                <button id="seeMoreInsightsBtn" class="text-gold-500 text-sm font-medium">See More</button>
+            </div>
+            <div class="bg-gradient-to-br from-gold-500/10 via-gold-500/5 to-transparent border border-gold-500/20 rounded-2xl p-6">
+                <div class="flex items-start space-x-4 mb-4">
+                    <div class="bg-gold-500/20 rounded-full p-3">
+                        <i class="fa-solid fa-lightbulb text-gold-500 text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-serif font-semibold text-base mb-2">Pattern Discovered</h4>
+                        <p class="text-white/70 text-sm leading-relaxed" id="insightText">
+                            Career victories increase by 67% when you pray to St. Joseph on Monday mornings.
+                        </p>
+                    </div>
+                </div>
+                <button id="viewAnalyticsBtn" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white py-3 rounded-xl text-sm font-medium transition-all">
+                    View Analytics
+                </button>
+            </div>
+        </section>
+
+        <section id="saints-section" class="px-5 py-6 pb-4">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-serif text-xl font-bold">Your Saints</h3>
+                <button id="exploreSaintsBtn" class="text-gold-500 text-sm font-medium">Explore</button>
+            </div>
+            <div id="homeSaintsCarousel" class="flex space-x-4 overflow-x-auto pb-2">
+                <!-- JS рендерит -->
+            </div>
+        </section>
+    </section>
+
+    <!-- JOURNAL SCREEN -->
+    <section id="screen-journal" class="screen hidden px-5 py-6">
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="font-serif text-2xl font-bold">My Journal</h2>
+            <button id="newEventBtnJournal" class="text-gold-500 text-sm font-semibold flex items-center space-x-1">
+                <i class="fa-solid fa-plus"></i>
+                <span>New</span>
+            </button>
+        </div>
+        <div id="journalFilter" class="flex space-x-3 mb-4 overflow-x-auto pb-1">
+            <button data-filter="all" class="journal-filter px-3 py-1 text-xs rounded-full bg-white/10 text-white/80 font-medium">All</button>
+            <button data-filter="Career" class="journal-filter px-3 py-1 text-xs rounded-full bg-white/5 text-white/60 font-medium">Career</button>
+            <button data-filter="Studies" class="journal-filter px-3 py-1 text-xs rounded-full bg-white/5 text-white/60 font-medium">Studies</button>
+            <button data-filter="Personal" class="journal-filter px-3 py-1 text-xs rounded-full bg-white/5 text-white/60 font-medium">Personal</button>
+            <button data-filter="Sports" class="journal-filter px-3 py-1 text-xs rounded-full bg-white/5 text-white/60 font-medium">Sports</button>
+        </div>
+        <div id="journalEventsList" class="space-y-4">
+            <!-- JS рендерит -->
+        </div>
+        <p id="journalEmpty" class="text-white/40 text-sm text-center mt-8 hidden">No events yet. Start by recording your first experience.</p>
+    </section>
+
+    <!-- ANALYTICS SCREEN -->
+    <section id="screen-analytics" class="screen hidden px-5 py-6">
+        <h2 class="font-serif text-2xl font-bold mb-5">Analytics</h2>
+
+        <!-- OVERVIEW -->
+        <div class="bg-gradient-to-br from-gold-500/10 to-gold-500/5 border border-gold-500/20 rounded-2xl p-5 mb-4">
+            <p class="text-xs text-gold-500 font-semibold mb-2 uppercase tracking-wide">Overview</p>
+            <p class="text-white/70 text-sm mb-1">Total events: <span id="analyticsTotalEvents" class="font-semibold text-gold-200">3</span></p>
+            <p class="text-white/70 text-sm mb-1">Victories: <span id="analyticsVictories" class="font-semibold text-green-400">2</span></p>
+            <p class="text-white/70 text-sm">Saints involved: <span id="analyticsSaints" class="font-semibold text-gold-200">3</span></p>
+        </div>
+
+        <!-- CHARTS -->
+        <div class="space-y-4 mb-4">
+            <!-- Category bar chart -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-serif text-lg">Events by Category</h3>
+                    <span class="text-white/40 text-xs">Last 90 days</span>
+                </div>
+                <div class="mt-2">
+                    <svg id="chartByCategory" class="w-full h-36"></svg>
+                </div>
+                <ul id="analyticsByCategory" class="mt-3 space-y-1 text-sm text-white/70">
+                    <!-- JS -->
+                </ul>
+            </div>
+
+            <!-- Timeline chart -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-serif text-lg">Events Over Time</h3>
+                    <span class="text-white/40 text-xs">Last 14 days</span>
+                </div>
+                <div class="mt-2">
+                    <svg id="chartTimeline" class="w-full h-32"></svg>
+                </div>
+            </div>
+
+            <!-- Saints bar chart -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-serif text-lg">Victories by Saint</h3>
+                    <span class="text-white/40 text-xs">All time</span>
+                </div>
+                <div class="mt-2">
+                    <svg id="chartBySaint" class="w-full h-32"></svg>
+                </div>
+                <ul id="analyticsBySaint" class="mt-3 space-y-1 text-sm text-white/70">
+                    <!-- JS -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- INSIGHTS TEXT -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
+            <h3 class="font-serif text-lg mb-2">Insights</h3>
+            <p id="analyticsInsightText" class="text-white/60 text-sm">
+                As you record more events, personalized patterns will appear here.
+            </p>
+        </div>
+    </section>
+
+    <!-- SAINTS SCREEN -->
+    <section id="screen-saints" class="screen hidden px-5 py-6">
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="font-serif text-2xl font-bold">Saints Guide</h2>
+            <button class="text-white/60 text-sm flex items-center space-x-1">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+            </button>
+        </div>
+
+        <div class="mb-4">
+            <p class="text-white/60 text-sm mb-2">Your most frequently mentioned saints:</p>
+            <div id="saintsTopList" class="flex space-x-4 overflow-x-auto pb-1">
+                <!-- JS -->
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <p class="text-white/60 text-sm mb-2">By area of help:</p>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                    <p class="font-semibold mb-1">Career</p>
+                    <p class="text-white/50">St. Joseph, St. Homobonus, St. Cajetan</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                    <p class="font-semibold mb-1">Health</p>
+                    <p class="text-white/50">St. Raphael, St. Panteleimon</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                    <p class="font-semibold mb-1">Studies</p>
+                    <p class="text-white/50">St. Thomas Aquinas, St. Catherine of Alexandria</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-3">
+                    <p class="font-semibold mb-1">Difficult Situations</p>
+                    <p class="text-white/50">St. Jude, St. Rita</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFILE SCREEN -->
+    <section id="screen-profile" class="screen hidden px-5 py-6">
+        <h2 class="font-serif text-2xl font-bold mb-5">Profile</h2>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 mb-4">
+            <div class="flex items-center space-x-4 mb-4">
+                <label for="profileAvatarInput" class="cursor-pointer">
+                    <div id="profileAvatarWrapper" class="w-14 h-14 rounded-full bg-gold-500/20 flex items-center justify-center overflow-hidden">
+                        <i id="profileAvatarIcon" class="fa-solid fa-user text-gold-500 text-2xl"></i>
+                        <img id="profileAvatarImage" src="" alt="Avatar" class="hidden w-full h-full object-cover">
+                    </div>
+                    <input id="profileAvatarInput" type="file" accept="image/*" class="hidden">
+                </label>
+                <div class="flex-1">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p id="profileNameDisplay" class="font-serif text-lg font-semibold">Pilgrim</p>
+                            <p id="profileBioDisplay" class="text-white/50 text-sm">Spiritual journey in progress</p>
+                        </div>
+                        <button id="editProfileBtn" class="text-gold-500 text-xs font-semibold flex items-center space-x-1">
+                            <i class="fa-solid fa-pen"></i>
+                            <span>Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-sm text-white/60 space-y-2">
+                <p>Journey start: <span id="profileStartDateDisplay" class="text-white/80">Today (local demo)</span></p>
+                <p>Events recorded: <span id="profileEvents" class="text-gold-200 font-semibold">3</span></p>
+                <p>Favorite saint: <span id="profileFavoriteSaint" class="text-gold-200 font-semibold">St. Joseph</span></p>
+                <p>Tradition: <span id="profileTraditionDisplay" class="text-white/80">Not specified</span></p>
+                <p>Notifications: <span id="profileNotificationsDisplay" class="text-white/80">Not configured</span></p>
+            </div>
+        </div>
+
+        <!-- Editable form -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+            <h3 class="font-serif text-lg mb-3">Profile Settings</h3>
+            <form id="profileForm" class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-white/70 mb-1">Name</label>
+                    <input id="profileNameInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500" placeholder="Your name">
+                </div>
+                <div>
+                    <label class="block text-white/70 mb-1">Bio</label>
+                    <textarea id="profileBioInput" rows="2" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500" placeholder="Short description of your spiritual journey"></textarea>
+                </div>
+                <div>
+                    <label class="block text-white/70 mb-1">Spiritual tradition</label>
+                    <select id="profileTraditionInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500">
+                        <option value="">Not specified</option>
+                        <option value="Catholic">Catholic</option>
+                        <option value="Orthodox">Orthodox</option>
+                        <option value="Protestant">Protestant</option>
+                        <option value="Eastern Christian">Eastern Christian</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-white/70 mb-1">Journey start date</label>
+                    <input type="date" id="profileStartDateInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500">
+                </div>
+                <div>
+                    <label class="block text-white/70 mb-1">Notifications</label>
+                    <select id="profileNotificationsInput" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500">
+                        <option value="off">Off</option>
+                        <option value="daily">Daily reminders</option>
+                        <option value="weekly">Weekly summary</option>
+                    </select>
+                </div>
+                <div class="pt-2 flex space-x-3">
+                    <button type="button" id="resetProfileBtn" class="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 text-white text-sm font-medium">
+                        Reset
+                    </button>
+                    <button type="submit" class="flex-1 bg-gradient-to-r from-gold-600 to-gold-500 text-black font-semibold py-2 rounded-xl text-sm">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- SETTINGS SCREEN -->
+    <section id="screen-settings" class="screen hidden px-5 py-6">
+        <h2 class="font-serif text-2xl font-bold mb-5">Settings</h2>
+        <p class="text-white/60 text-sm">This is a static demo section. Here you would configure privacy, notifications and account options.</p>
+    </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gold-500/20 px-5 py-3">
+    <div class="flex items-center justify-around">
+        <button data-screen="home" class="nav-btn flex flex-col items-center space-y-1 text-gold-500">
+            <i class="fa-solid fa-house text-xl"></i>
+            <span class="text-xs font-medium">Home</span>
+        </button>
+        <button data-screen="journal" class="nav-btn flex flex-col items-center space-y-1 text-white/40">
+            <i class="fa-solid fa-book-open text-xl"></i>
+            <span class="text-xs font-medium">Journal</span>
+        </button>
+        <button id="centerNewEventBtn" class="flex flex-col items-center -mt-8">
+            <div class="bg-gradient-to-r from-gold-600 to-gold-500 rounded-full p-4 shadow-lg shadow-gold-500/30">
+                <i class="fa-solid fa-plus text-black text-2xl"></i>
+            </div>
+        </button>
+        <button data-screen="analytics" class="nav-btn flex flex-col items-center space-y-1 text-white/40">
+            <i class="fa-solid fa-chart-line text-xl"></i>
+            <span class="text-xs font-medium">Analytics</span>
+        </button>
+        <button data-screen="profile" class="nav-btn flex flex-col items-center space-y-1 text-white/40">
+            <i class="fa-solid fa-user-circle text-xl"></i>
+            <span class="text-xs font-medium">Profile</span>
+        </button>
+    </div>
+</nav>
+
+<!-- MODAL: NEW EVENT -->
+<div id="newEventModal" class="fixed inset-0 bg-black/80 z-[60] hidden flex items-end sm:items-center justify-center">
+    <div class="w-full max-w-md bg-black border border-gold-500/30 rounded-t-2xl sm:rounded-2xl p-5 shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="font-serif text-xl font-bold text-gold-500">Record New Event</h3>
+            <button id="closeNewEventModal" class="text-white/60 text-xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <form id="newEventForm" class="space-y-3 text-sm">
+            <div>
+                <label class="block text-white/70 mb-1">Title</label>
+                <input name="title" required="" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500" placeholder="Promotion Interview, Final Match, etc.">
+            </div>
+            <div>
+                <label class="block text-white/70 mb-1">Category</label>
+                <select name="category" required="" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500">
+                    <option value="Career">Career</option>
+                    <option value="Studies">Studies</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-white/70 mb-1">Saint</label>
+                <input name="saint" required="" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500" placeholder="St. Joseph, St. Raphael, etc.">
+            </div>
+            <div>
+                <label class="block text-white/70 mb-1">Outcome</label>
+                <select name="status" required="" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500">
+                    <option value="Victory">Victory</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Neutral">Neutral</option>
+                    <option value="Loss">Loss</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-white/70 mb-1">Notes</label>
+                <textarea name="notes" rows="3" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-gold-500" placeholder="How you prayed, what you felt, what happened..."></textarea>
+            </div>
+            <div class="pt-2 flex space-x-3">
+                <button type="button" id="cancelNewEvent" class="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 text-white text-sm font-medium">
+                    Cancel
+                </button>
+                <button type="submit" class="flex-1 bg-gradient-to-r from-gold-600 to-gold-500 text-black font-semibold py-2 rounded-xl text-sm">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ----- LOCAL STORAGE KEYS -----
+    const LS_EVENTS_KEY = 'sanctus_events_v1';
+    const LS_NEXTID_KEY = 'sanctus_nextid_v1';
+    const LS_PROFILE_KEY = 'sanctus_profile_v1';
+
+    // ----- STATE -----
+    const state = {
+        events: [],
+        nextId: 1,
+        profile: {
+            name: 'Pilgrim',
+            bio: 'Spiritual journey in progress',
+            tradition: '',
+            startDate: '',
+            notifications: 'off',
+            avatarDataUrl: null,
+        }
+    };
+
+    // ----- HELPERS -----
+    function saveEvents() {
+        localStorage.setItem(LS_EVENTS_KEY, JSON.stringify(state.events.map(e => ({
+            ...e,
+            createdAt: e.createdAt.toISOString(),
+        }))));
+        localStorage.setItem(LS_NEXTID_KEY, String(state.nextId));
+    }
+
+    function loadEvents() {
+        const raw = localStorage.getItem(LS_EVENTS_KEY);
+        const nextIdRaw = localStorage.getItem(LS_NEXTID_KEY);
+        if (raw) {
+            try {
+                const arr = JSON.parse(raw);
+                state.events = arr.map(e => ({
+                    ...e,
+                    createdAt: new Date(e.createdAt),
+                }));
+            } catch (e) {
+                state.events = [];
+            }
+        }
+        if (nextIdRaw) {
+            const nid = parseInt(nextIdRaw, 10);
+            if (!isNaN(nid)) state.nextId = nid;
+        }
+    }
+
+    function saveProfile() {
+        localStorage.setItem(LS_PROFILE_KEY, JSON.stringify(state.profile));
+    }
+
+    function loadProfile() {
+        const raw = localStorage.getItem(LS_PROFILE_KEY);
+        if (raw) {
+            try {
+                const p = JSON.parse(raw);
+                state.profile = { ...state.profile, ...p };
+            } catch (e) {}
+        }
+    }
+
+    // EVENTS
+    function createEvent({ title, category, saint, status, notes, createdAt }) {
+        return {
+            id: state.nextId++,
+            title,
+            category,
+            saint,
+            status,
+            notes,
+            createdAt: createdAt || new Date(),
+        };
+    }
+
+    function seedInitialEvents() {
+        if (state.events.length) return; // уже есть данные из localStorage
+        const now = new Date();
+        const daysAgo = (d) => new Date(now.getTime() - d * 24 * 60 * 60 * 1000);
+
+        const seeded = [
+            createEvent({
+                title: 'Promotion Interview',
+                category: 'Career',
+                saint: 'St. Joseph',
+                status: 'Victory',
+                notes: 'Prayed to St. Joseph before the meeting. Felt calm and confident throughout.',
+                createdAt: daysAgo(2),
+            }),
+            createEvent({
+                title: 'Health Challenge',
+                category: 'Personal',
+                saint: 'St. Raphael',
+                status: 'Victory',
+                notes: 'Lit candles for St. Raphael. Medical tests came back positive.',
+                createdAt: daysAgo(5),
+            }),
+            createEvent({
+                title: 'Final Exams',
+                category: 'Studies',
+                saint: 'St. Thomas Aquinas',
+                status: 'In Progress',
+                notes: 'Asked St. Thomas Aquinas for guidance during preparation.',
+                createdAt: daysAgo(7),
+            }),
+        ];
+
+        state.events = seeded;
+        saveEvents();
+    }
+
+    // DATE UTILS
+    function formatRelativeDate(date) {
+        const now = new Date();
+        const diffMs = now - date;
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+        if (diffDays <= 0) return 'Today';
+        if (diffDays === 1) return '1 day ago';
+        if (diffDays < 7) return diffDays + ' days ago';
+        const diffWeeks = Math.floor(diffDays / 7);
+        if (diffWeeks === 1) return '1 week ago';
+        return diffWeeks + ' weeks ago';
+    }
+
+    function getCategoryBadgeClasses(category) {
+        switch (category) {
+            case 'Career':
+                return 'bg-gold-500/20 text-gold-500';
+            case 'Personal':
+                return 'bg-blue-500/20 text-blue-400';
+            case 'Studies':
+                return 'bg-purple-500/20 text-purple-400';
+            case 'Sports':
+                return 'bg-emerald-500/20 text-emerald-400';
+            default:
+                return 'bg-white/10 text-white/70';
+        }
+    }
+
+    function getStatusIconAndClasses(status) {
+        switch (status) {
+            case 'Victory':
+                return { icon: 'fa-check-circle', color: 'text-green-500' };
+            case 'In Progress':
+                return { icon: 'fa-clock', color: 'text-yellow-500' };
+            case 'Loss':
+                return { icon: 'fa-xmark-circle', color: 'text-red-500' };
+            case 'Neutral':
+            default:
+                return { icon: 'fa-minus-circle', color: 'text-white/60' };
+        }
+    }
+
+    function renderEventCard(event) {
+        const badgeClasses = getCategoryBadgeClasses(event.category);
+        const relativeDate = formatRelativeDate(event.createdAt);
+        const statusMeta = getStatusIconAndClasses(event.status);
+
+        return `
+        <div class="event-card bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="px-2 py-1 ${badgeClasses} text-xs font-semibold rounded-full">${event.category}</span>
+                        <span class="text-white/40 text-xs">${relativeDate}</span>
+                    </div>
+                    <h4 class="font-serif font-semibold text-base mb-2">${event.title}</h4>
+                    <p class="text-white/60 text-sm mb-3">${event.notes || ''}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-hands-praying text-gold-500 text-sm"></i>
+                    <span class="text-white/70 text-xs">${event.saint}</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid ${statusMeta.icon} ${statusMeta.color} text-sm"></i>
+                    <span class="${statusMeta.color} text-xs font-medium">${event.status}</span>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    // ----- SAINT STATS -----
+    function getSaintStats() {
+        const map = new Map();
+        state.events.forEach(e => {
+            if (!map.has(e.saint)) {
+                map.set(e.saint, { count: 0, victories: 0 });
+            }
+            const s = map.get(e.saint);
+            s.count++;
+            if (e.status === 'Victory') s.victories++;
+        });
+        return Array.from(map.entries()).map(([name, data]) => ({
+            name,
+            count: data.count,
+            victories: data.victories,
+        })).sort((a, b) => b.count - a.count);
+    }
+
+    // ----- RENDER HOME -----
+    function renderHome() {
+        const recentListEl = document.getElementById('recentEventsList');
+        const eventsSorted = [...state.events].sort((a, b) => b.createdAt - a.createdAt);
+        const recent = eventsSorted.slice(0, 3);
+
+        recentListEl.innerHTML = recent.map(renderEventCard).join('');
+
+        const totalEvents = state.events.length;
+        const victories = state.events.filter(e => e.status === 'Victory').length;
+        const uniqueSaints = new Set(state.events.map(e => e.saint)).size;
+
+        document.getElementById('victoriesCount').textContent = victories;
+        document.getElementById('saintsCount').textContent = uniqueSaints;
+
+        document.getElementById('victoriesChange').textContent =
+            '+' + (totalEvents ? Math.max(1, Math.round((victories / (totalEvents || 1)) * 10)) : 0) + '%';
+        document.getElementById('saintsChange').textContent =
+            '+' + (uniqueSaints ? Math.max(1, uniqueSaints * 2) : 0) + '%';
+
+        renderSaintsCarousels();
+        renderAnalytics();
+        renderProfileStatsOnly();
+    }
+
+    // ----- RENDER JOURNAL -----
+    function renderJournal(filterCategory = 'all') {
+        const journalListEl = document.getElementById('journalEventsList');
+        const emptyEl = document.getElementById('journalEmpty');
+
+        let eventsToShow = [...state.events].sort((a, b) => b.createdAt - a.createdAt);
+        if (filterCategory !== 'all') {
+            eventsToShow = eventsToShow.filter(e => e.category === filterCategory);
+        }
+
+        if (!eventsToShow.length) {
+            journalListEl.innerHTML = '';
+            emptyEl.classList.remove('hidden');
+        } else {
+            emptyEl.classList.add('hidden');
+            journalListEl.innerHTML = eventsToShow.map(renderEventCard).join('');
+        }
+    }
+
+    function setActiveJournalFilter(category) {
+        document.querySelectorAll('.journal-filter').forEach(btn => {
+            if (btn.dataset.filter === category) {
+                btn.classList.add('bg-white/10', 'text-white/80');
+                btn.classList.remove('bg-white/5', 'text-white/60');
+            } else {
+                btn.classList.remove('bg-white/10', 'text-white/80');
+                btn.classList.add('bg-white/5', 'text-white/60');
+            }
+        });
+    }
+
+    // ----- SAINTS CAROUSELS -----
+    function renderSaintsCarousels() {
+        const stats = getSaintStats();
+
+        const homeCarousel = document.getElementById('homeSaintsCarousel');
+        const saintsTopList = document.getElementById('saintsTopList');
+
+        function badgeIcon(name) {
+            if (name.includes('Joseph')) return 'fa-hands-praying';
+            if (name.includes('Raphael')) return 'fa-dove';
+            if (name.includes('Thomas')) return 'fa-book';
+            if (name.includes('Jude')) return 'fa-heart';
+            return 'fa-hands-praying';
+        }
+
+        const cardsHtml = stats.map(saint => `
+            <div class="flex-shrink-0 w-32">
+                <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-4 text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gold-500/20 flex items-center justify-center">
+                        <i class="fa-solid ${badgeIcon(saint.name)} text-gold-500 text-2xl"></i>
+                    </div>
+                    <p class="font-serif font-semibold text-sm mb-1">${saint.name}</p>
+                    <p class="text-white/50 text-xs">${saint.count} events</p>
+                </div>
+            </div>
+        `).join('');
+
+        if (stats.length) {
+            homeCarousel.innerHTML = cardsHtml;
+            saintsTopList.innerHTML = cardsHtml;
+        }
+    }
+
+    // ----- ANALYTICS + CHARTS -----
+    function renderAnalytics() {
+        const totalEvents = state.events.length;
+        const victories = state.events.filter(e => e.status === 'Victory').length;
+        const uniqueSaintsCount = new Set(state.events.map(e => e.saint)).size;
+
+        document.getElementById('analyticsTotalEvents').textContent = totalEvents;
+        document.getElementById('analyticsVictories').textContent = victories;
+        document.getElementById('analyticsSaints').textContent = uniqueSaintsCount;
+
+        const byCategoryEl = document.getElementById('analyticsByCategory');
+        const catMap = new Map();
+        state.events.forEach(e => {
+            if (!catMap.has(e.category)) {
+                catMap.set(e.category, { count: 0, victories: 0 });
+            }
+            const c = catMap.get(e.category);
+            c.count++;
+            if (e.status === 'Victory') c.victories++;
+        });
+
+        byCategoryEl.innerHTML = Array.from(catMap.entries()).map(([cat, data]) => {
+            const rate = data.count ? Math.round((data.victories / data.count) * 100) : 0;
+            return `<li>${cat}: <span class="text-gold-200">${data.victories}/${data.count}</span> victories (<span class="text-gold-200">${rate}%</span>)</li>`;
+        }).join('');
+
+        const bySaintEl = document.getElementById('analyticsBySaint');
+        const saintStats = getSaintStats();
+        bySaintEl.innerHTML = saintStats.map(saint => {
+            const rate = saint.count ? Math.round((saint.victories / saint.count) * 100) : 0;
+            return `<li>${saint.name}: <span class="text-gold-200">${saint.victories}/${saint.count}</span> victories (<span class="text-gold-200">${rate}%</span>)</li>`;
+        }).join('');
+
+        const insightEl = document.getElementById('analyticsInsightText');
+        if (!totalEvents) {
+            insightEl.textContent = 'As you record more events, personalized patterns will appear here.';
+            document.getElementById('insightText').textContent = insightEl.textContent;
+        } else {
+            const top = saintStats[0];
+            if (top) {
+                const rate = top.count ? Math.round((top.victories / top.count) * 100) : 0;
+                const txt = `You mention ${top.name} most often. About ${rate}% of events with this saint are marked as victories.`;
+                insightEl.textContent = txt;
+                document.getElementById('insightText').textContent = txt;
+            }
+        }
+
+        renderCharts(catMap, saintStats);
+    }
+
+    // DRAW CHARTS (SVG без либ)
+    function clearSvg(svg) {
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+    }
+
+    function renderCharts(catMap, saintStats) {
+        renderCategoryBarChart(catMap);
+        renderTimelineChart();
+        renderSaintBarChart(saintStats);
+    }
+
+    function renderCategoryBarChart(catMap) {
+        const svg = document.getElementById('chartByCategory');
+        clearSvg(svg);
+
+        const width = svg.clientWidth || 320;
+        const height = svg.clientHeight || 144;
+        const padding = { top: 10, right: 10, bottom: 20, left: 10 };
+
+        const entries = Array.from(catMap.entries());
+        if (!entries.length) return;
+
+        const maxCount = Math.max(...entries.map(([_, v]) => v.count)) || 1;
+        const barWidth = width / Math.max(entries.length * 2, 4);
+
+        entries.forEach(([cat, data], idx) => {
+            const x = padding.left + idx * (barWidth * 2);
+            const barHeight = (data.count / maxCount) * (height - padding.top - padding.bottom - 10);
+            const y = height - padding.bottom - barHeight;
+
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', x);
+            rect.setAttribute('y', y);
+            rect.setAttribute('width', barWidth);
+            rect.setAttribute('height', barHeight);
+            rect.setAttribute('rx', 4);
+            rect.setAttribute('fill', 'url(#catGrad' + idx + ')');
+            rect.setAttribute('opacity', '0.9');
+            svg.appendChild(rect);
+
+            // label
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x + barWidth / 2);
+            text.setAttribute('y', height - 5);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', '#9CA3AF');
+            text.setAttribute('font-size', '9');
+            text.textContent = cat[0].toUpperCase();
+            svg.appendChild(text);
+
+            // defs gradient
+            const defs = svg.querySelector('defs') || document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            if (!svg.querySelector('defs')) svg.appendChild(defs);
+            const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            grad.setAttribute('id', 'catGrad' + idx);
+            grad.setAttribute('x1', '0');
+            grad.setAttribute('y1', '0');
+            grad.setAttribute('x2', '0');
+            grad.setAttribute('y2', '1');
+
+            const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop1.setAttribute('offset', '0%');
+            stop1.setAttribute('stop-color', '#D4AF37');
+            const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop2.setAttribute('offset', '100%');
+            stop2.setAttribute('stop-color', '#D4AF37');
+            stop2.setAttribute('stop-opacity', '0.2');
+
+            grad.appendChild(stop1);
+            grad.appendChild(stop2);
+            defs.appendChild(grad);
+        });
+    }
+
+    function renderTimelineChart() {
+        const svg = document.getElementById('chartTimeline');
+        clearSvg(svg);
+
+        const width = svg.clientWidth || 320;
+        const height = svg.clientHeight || 128;
+        const padding = { top: 10, right: 10, bottom: 18, left: 24 };
+
+        const days = 14;
+        const now = new Date();
+        const buckets = [];
+        for (let i = days - 1; i >= 0; i--) {
+            const day = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+            const key = day.toISOString().slice(0,10);
+            buckets.push({ key, day, count: 0 });
+        }
+
+        state.events.forEach(e => {
+            const key = e.createdAt.toISOString().slice(0,10);
+            const bucket = buckets.find(b => b.key === key);
+            if (bucket) bucket.count++;
+        });
+
+        const maxCount = Math.max(...buckets.map(b => b.count), 1);
+        const xStep = (width - padding.left - padding.right) / (days - 1);
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let d = '';
+        buckets.forEach((b, idx) => {
+            const x = padding.left + idx * xStep;
+            const y = height - padding.bottom - (b.count / maxCount) * (height - padding.top - padding.bottom - 8);
+            d += (idx === 0 ? 'M ' : ' L ') + x + ' ' + y;
+        });
+        if (!d) return;
+
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', '#D4AF37');
+        path.setAttribute('stroke-width', '2');
+        svg.appendChild(path);
+
+        // Area fill
+        const area = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let dArea = '';
+        buckets.forEach((b, idx) => {
+            const x = padding.left + idx * xStep;
+            const y = height - padding.bottom - (b.count / maxCount) * (height - padding.top - padding.bottom - 8);
+            dArea += (idx === 0 ? 'M ' : ' L ') + x + ' ' + y;
+        });
+        const lastX = padding.left + (days - 1) * xStep;
+        const baseY = height - padding.bottom;
+        dArea += ' L ' + lastX + ' ' + baseY + ' L ' + padding.left + ' ' + baseY + ' Z';
+
+        area.setAttribute('d', dArea);
+        area.setAttribute('fill', 'url(#timelineGrad)');
+        svg.appendChild(area);
+
+        // gradient def
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        grad.setAttribute('id', 'timelineGrad');
+        grad.setAttribute('x1', '0');
+        grad.setAttribute('y1', '0');
+        grad.setAttribute('x2', '0');
+        grad.setAttribute('y2', '1');
+        const s1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        s1.setAttribute('offset', '0%');
+        s1.setAttribute('stop-color', '#D4AF37');
+        s1.setAttribute('stop-opacity', '0.4');
+        const s2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        s2.setAttribute('offset', '100%');
+        s2.setAttribute('stop-color', '#D4AF37');
+        s2.setAttribute('stop-opacity', '0');
+        grad.appendChild(s1); grad.appendChild(s2);
+        defs.appendChild(grad);
+        svg.insertBefore(defs, svg.firstChild);
+
+        // x labels (каждый 3-й день)
+        buckets.forEach((b, idx) => {
+            if (idx % 3 !== 0 && idx !== buckets.length - 1) return;
+            const x = padding.left + idx * xStep;
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x);
+            text.setAttribute('y', height - 4);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', '#9CA3AF');
+            text.setAttribute('font-size', '8');
+            const dLabel = new Date(b.day);
+            text.textContent = (dLabel.getMonth() + 1) + '/' + dLabel.getDate();
+            svg.appendChild(text);
+        });
+    }
+
+    function renderSaintBarChart(saintStats) {
+        const svg = document.getElementById('chartBySaint');
+        clearSvg(svg);
+
+        const width = svg.clientWidth || 320;
+        const height = svg.clientHeight || 128;
+        const padding = { top: 6, right: 10, bottom: 6, left: 60 };
+
+        const stats = saintStats.slice(0, 4);
+        if (!stats.length) return;
+
+        const maxVictories = Math.max(...stats.map(s => s.victories), 1);
+        const barAreaWidth = width - padding.left - padding.right;
+        const rowHeight = (height - padding.top - padding.bottom) / stats.length;
+
+        stats.forEach((s, idx) => {
+            const y = padding.top + idx * rowHeight + rowHeight * 0.2;
+            const barHeight = rowHeight * 0.6;
+            const barWidth = (s.victories / maxVictories) * barAreaWidth;
+
+            // background line
+            const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            bg.setAttribute('x', padding.left);
+            bg.setAttribute('y', y);
+            bg.setAttribute('width', barAreaWidth);
+            bg.setAttribute('height', barHeight);
+            bg.setAttribute('rx', 4);
+            bg.setAttribute('fill', 'rgba(255,255,255,0.08)');
+            svg.appendChild(bg);
+
+            // bar
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', padding.left);
+            rect.setAttribute('y', y);
+            rect.setAttribute('width', barWidth);
+            rect.setAttribute('height', barHeight);
+            rect.setAttribute('rx', 4);
+            rect.setAttribute('fill', '#D4AF37');
+            svg.appendChild(rect);
+
+            // label
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', padding.left - 4);
+            text.setAttribute('y', y + barHeight / 2 + 3);
+            text.setAttribute('text-anchor', 'end');
+            text.setAttribute('fill', '#E5E7EB');
+            text.setAttribute('font-size', '9');
+            text.textContent = s.name;
+            svg.appendChild(text);
+        });
+    }
+
+    // ----- PROFILE RENDER / EDIT -----
+    function renderProfile() {
+        const p = state.profile;
+
+        document.getElementById('profileNameDisplay').textContent = p.name || 'Pilgrim';
+        document.getElementById('profileBioDisplay').textContent = p.bio || 'Spiritual journey in progress';
+        document.getElementById('profileTraditionDisplay').textContent = p.tradition || 'Not specified';
+
+        const startDisplay = document.getElementById('profileStartDateDisplay');
+        if (p.startDate) {
+            const d = new Date(p.startDate);
+            if (!isNaN(d.getTime())) {
+                startDisplay.textContent = d.toLocaleDateString();
+            } else {
+                startDisplay.textContent = 'Not specified';
+            }
+        } else {
+            startDisplay.textContent = 'Not specified';
+        }
+
+        const notifMap = {
+            off: 'Off',
+            daily: 'Daily reminders',
+            weekly: 'Weekly summary'
+        };
+        document.getElementById('profileNotificationsDisplay').textContent =
+            notifMap[p.notifications] || 'Not configured';
+
+        // Inputs
+        document.getElementById('profileNameInput').value = p.name || '';
+        document.getElementById('profileBioInput').value = p.bio || '';
+        document.getElementById('profileTraditionInput').value = p.tradition || '';
+        document.getElementById('profileStartDateInput').value = p.startDate || '';
+        document.getElementById('profileNotificationsInput').value = p.notifications || 'off';
+
+        // Avatar
+        const avatarImg = document.getElementById('profileAvatarImage');
+        const avatarIcon = document.getElementById('profileAvatarIcon');
+        if (p.avatarDataUrl) {
+            avatarImg.src = p.avatarDataUrl;
+            avatarImg.classList.remove('hidden');
+            avatarIcon.classList.add('hidden');
+        } else {
+            avatarImg.src = '';
+            avatarImg.classList.add('hidden');
+            avatarIcon.classList.remove('hidden');
+        }
+
+        renderProfileStatsOnly();
+    }
+
+    function renderProfileStatsOnly() {
+        const events = state.events.length;
+        const saintStats = getSaintStats();
+        const favorite = saintStats[0]?.name || '—';
+        document.getElementById('profileEvents').textContent = events;
+        document.getElementById('profileFavoriteSaint').textContent = favorite;
+    }
+
+    function resetProfileToDefault() {
+        state.profile = {
+            name: 'Pilgrim',
+            bio: 'Spiritual journey in progress',
+            tradition: '',
+            startDate: '',
+            notifications: 'off',
+            avatarDataUrl: null,
+        };
+        saveProfile();
+        renderProfile();
+    }
+
+    // ----- NAVIGATION -----
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => {
+            if (s.id === 'screen-' + screenId) {
+                s.classList.remove('hidden');
+                s.classList.add('active');
+            } else {
+                s.classList.add('hidden');
+                s.classList.remove('active');
+            }
+        });
+
+        const titleMap = {
+            home: 'SANCTUS',
+            journal: 'Journal',
+            analytics: 'Analytics',
+            saints: 'Saints Guide',
+            profile: 'Profile',
+            settings: 'Settings',
+        };
+        document.getElementById('headerTitle').textContent = titleMap[screenId] || 'SANCTUS';
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if (btn.dataset.screen === screenId) {
+                btn.classList.remove('text-white/40');
+                btn.classList.add('text-gold-500');
+            } else {
+                btn.classList.add('text-white/40');
+                btn.classList.remove('text-gold-500');
+            }
+        });
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            if (link.dataset.screen === screenId) {
+                link.classList.remove('text-white/70');
+                link.classList.add('text-gold-500');
+            } else {
+                link.classList.add('text-white/70');
+                link.classList.remove('text-gold-500');
+            }
+        });
+
+        if (screenId === 'journal') {
+            setActiveJournalFilter('all');
+            renderJournal('all');
+        }
+        if (screenId === 'analytics') {
+            renderAnalytics();
+        }
+        if (screenId === 'profile') {
+            renderProfile();
+        }
+    }
+
+    // ----- NEW EVENT MODAL -----
+    function openNewEventModal() {
+        document.getElementById('newEventModal').classList.remove('hidden');
+    }
+
+    function closeNewEventModal() {
+        document.getElementById('newEventModal').classList.add('hidden');
+        document.getElementById('newEventForm').reset();
+    }
+
+    // ----- INIT -----
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load from localStorage
+        loadEvents();
+        loadProfile();
+        seedInitialEvents();
+
+        // Sidebar
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+        });
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+        sidebar.addEventListener('click', (e) => {
+            if (e.target === sidebar) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // Bottom nav
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const screen = btn.dataset.screen;
+                showScreen(screen);
+            });
+        });
+
+        // Sidebar nav
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const screen = link.dataset.screen;
+                showScreen(screen);
+                sidebar.classList.add('-translate-x-full');
+            });
+        });
+
+        // New event buttons
+        document.getElementById('newEventBtn').addEventListener('click', openNewEventModal);
+        document.getElementById('centerNewEventBtn').addEventListener('click', openNewEventModal);
+        document.getElementById('newEventBtnJournal').addEventListener('click', openNewEventModal);
+
+        document.getElementById('closeNewEventModal').addEventListener('click', closeNewEventModal);
+        document.getElementById('cancelNewEvent').addEventListener('click', closeNewEventModal);
+        document.getElementById('newEventModal').addEventListener('click', (e) => {
+            if (e.target.id === 'newEventModal') {
+                closeNewEventModal();
+            }
+        });
+
+        // Journal filters
+        document.querySelectorAll('.journal-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.dataset.filter;
+                setActiveJournalFilter(cat);
+                renderJournal(cat);
+            });
+        });
+
+        // Home -> other screens shortcuts
+        document.getElementById('viewAllEventsBtn').addEventListener('click', () => {
+            showScreen('journal');
+        });
+        document.getElementById('viewAnalyticsBtn').addEventListener('click', () => {
+            showScreen('analytics');
+        });
+        document.getElementById('seeMoreInsightsBtn').addEventListener('click', () => {
+            showScreen('analytics');
+        });
+        document.getElementById('exploreSaintsBtn').addEventListener('click', () => {
+            showScreen('saints');
+        });
+
+        // New event form submit
+        document.getElementById('newEventForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const title = form.title.value.trim();
+            const category = form.category.value;
+            const saint = form.saint.value.trim();
+            const status = form.status.value;
+            const notes = form.notes.value.trim();
+            if (!title || !saint) return;
+
+            const newEvent = createEvent({ title, category, saint, status, notes });
+            state.events.push(newEvent);
+            saveEvents();
+
+            renderHome();
+            renderJournal();
+            closeNewEventModal();
+        });
+
+        // PROFILE: avatar upload
+        document.getElementById('profileAvatarInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                state.profile.avatarDataUrl = evt.target.result;
+                saveProfile();
+                renderProfile();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // PROFILE: form save
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('profileNameInput').value.trim();
+            const bio = document.getElementById('profileBioInput').value.trim();
+            const tradition = document.getElementById('profileTraditionInput').value;
+            const startDate = document.getElementById('profileStartDateInput').value;
+            const notifications = document.getElementById('profileNotificationsInput').value;
+
+            state.profile.name = name || 'Pilgrim';
+            state.profile.bio = bio || 'Spiritual journey in progress';
+            state.profile.tradition = tradition || '';
+            state.profile.startDate = startDate || '';
+            state.profile.notifications = notifications || 'off';
+
+            saveProfile();
+            renderProfile();
+        });
+
+        // PROFILE: reset
+        document.getElementById('resetProfileBtn').addEventListener('click', () => {
+            resetProfileToDefault();
+        });
+
+        // PROFILE: small "Edit" button just скроллит к форме
+        document.getElementById('editProfileBtn').addEventListener('click', () => {
+            const formEl = document.getElementById('profileForm');
+            formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Initial render
+        renderHome();
+        renderJournal('all');
+        renderProfile();
+        showScreen('home');
+    });
+</script>
+
+
+
+</body></html>
